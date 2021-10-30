@@ -19,6 +19,10 @@ public class CarFactoryBean implements FactoryBean<Car> {
         return Car.class;
     }
 
+    /**
+     * 是否单例，如果是单例，则不会重复执行getObject，再次获取走的是ioc的缓存，通过↓支持
+     * @see org.springframework.beans.factory.support.FactoryBeanRegistrySupport#factoryBeanObjectCache
+     */
     @Override
     public boolean isSingleton() {
         return true;

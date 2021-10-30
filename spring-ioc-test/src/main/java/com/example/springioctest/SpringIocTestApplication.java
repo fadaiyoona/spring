@@ -15,15 +15,19 @@ public class SpringIocTestApplication {
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext beanFactory = SpringApplication.run(SpringIocTestApplication.class, args);
 
+        // Case --- BeanCurrentlyInCreation
         BeanA beanA = beanFactory.getBean(BeanA.class);
         beanA.sayHello();
         BeanB beanB = beanFactory.getBean(BeanB.class);
         beanB.sayHello();
 
+        // Case --- FactoryBean
         Car car1 = (Car) beanFactory.getBean("car");
+        Car car2 = (Car) beanFactory.getBean("car");
         CarFactoryBean carFactoryBean = (CarFactoryBean) beanFactory.getBean("&car");
-        Car car2 = carFactoryBean.getObject();
-        System.out.println(car1.equals(car2));
+        Car car3 = carFactoryBean.getObject();
+        System.out.println(car1 == car2);
+        System.out.println(car1 == car3);
     }
 
 }
