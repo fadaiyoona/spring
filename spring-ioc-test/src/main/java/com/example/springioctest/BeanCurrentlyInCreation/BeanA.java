@@ -1,11 +1,22 @@
 package com.example.springioctest.BeanCurrentlyInCreation;
 
+import com.example.springioctest.beans.BeanC;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 @Component
 public class BeanA {
+
+    @Setter
+    private Integer a;
+
+    @Autowired
+    private Collection<BeanC> beanCS;
+
     /**
      * 这种方式注入，因为使用了@Async，导致BeanA是被代理过的，这样Spring处理循环依赖时，
      * 一开始实例化的BeanA，与注册完BeanB后拿到的BeanA不是相同的对象，就会报错
