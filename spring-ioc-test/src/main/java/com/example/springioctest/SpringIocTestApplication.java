@@ -1,7 +1,5 @@
 package com.example.springioctest;
 
-import com.example.springioctest.transaction.model.TestDO;
-import com.example.springioctest.transaction.service.TestService;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@ComponentScan("com.example.springioctest.BeanCurrentlyInCreation")
 //@ComponentScan("com.example.springioctest.FactoryBean")
 //@ComponentScan("com.example.springioctest.aop")
-@ComponentScan("com.example.springioctest.transaction")
+//@ComponentScan("com.example.springioctest.transaction")
+@ComponentScan("com.example.springioctest.springmvc")
 @SpringBootApplication
 public class SpringIocTestApplication {
 
@@ -43,10 +42,10 @@ public class SpringIocTestApplication {
 //        aopBean.sayHello();
 
         // Case --- transaction
-        TestService testService = listableBeanFactory.getBean(TestService.class);
-        TestDO testDO = new TestDO();
-        testDO.setName("name");
-        testService.save(testDO);
+//        TestService testService = listableBeanFactory.getBean(TestService.class);
+//        TestDO testDO = new TestDO();
+//        testDO.setName("name");
+//        testService.save(testDO);
     }
 
 }
